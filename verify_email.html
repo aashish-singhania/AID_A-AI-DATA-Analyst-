@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Email - AI Data Analyst</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-6">
+    <div class="w-full max-w-md bg-white rounded-xl shadow-lg p-8">
+        <h1 class="text-2xl font-bold text-center text-gray-800 mb-2">Verify your email</h1>
+        <p class="text-sm text-center text-gray-600 mb-6">
+            We sent a 6-digit OTP to <strong>{{ email }}</strong>.
+        </p>
+
+        <form method="POST" action="/verify-email" class="space-y-4">
+            <div>
+                <label for="otp" class="block text-sm font-medium text-gray-700">OTP</label>
+                <input id="otp" name="otp" type="text" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" required
+                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" />
+            </div>
+            <button type="submit"
+                    class="w-full rounded-md bg-blue-600 py-2 text-white font-medium hover:bg-blue-700">
+                Verify
+            </button>
+        </form>
+
+        {% if message %}
+        <div class="mt-4 bg-red-100 border-l-4 border-red-500 text-red-700 p-3 rounded">
+            {{ message }}
+        </div>
+        {% endif %}
+
+        <p class="mt-6 text-sm text-center text-gray-600">
+            <a href="/register" class="text-blue-600 hover:underline">Back to register</a>
+        </p>
+    </div>
+</body>
+</html>
+

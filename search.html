@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Web Search</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8 font-sans">
+    <div class="max-w-4xl mx-auto bg-white shadow-xl rounded-lg p-8">
+        <div class="flex justify-between items-center mb-4">
+            <a href="/" class="text-blue-600 hover:underline">&larr; Go to Data Analyst Agent</a>
+            <a href="/logout" class="text-red-500 hover:underline">Logout</a>
+        </div>
+        <h1 class="text-4xl font-bold text-center text-gray-800 mb-6">
+            AI Web Search Agent
+        </h1>
+
+        <form action="/search" method="POST">
+            <div class="mb-4">
+                <label for="api_key" class="block text-sm font-medium text-gray-700">Groq API Key (if not already set)</label>
+                <input type="password" name="api_key" id="api_key" placeholder="gsk_..."
+                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+            </div>
+            <div class="mb-4">
+                <label for="question" class="block text-sm font-medium text-gray-700">Your Question:</label>
+                <textarea name="question" id="question" rows="3"
+                          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                          placeholder="e.g., 'What is LangChain?' or 'Latest news on Llama 3.1'"></textarea>
+            </div>
+            <button type="submit"
+                    class="inline-flex justify-center rounded-md border border-transparent bg-blue-600 py-2 px-6 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                Search
+            </button>
+        </form>
+
+        {% if message %}
+        <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mt-6" role="alert">
+            <p>{{ message }}</p>
+        </div>
+        {% endif %}
+
+        {% if response %}
+        <div class="mt-8">
+            <h2 class="text-2xl font-semibold text-gray-700 mb-4">Response:</h2>
+            <div class="border rounded-lg p-6 bg-gray-50 whitespace-pre-wrap">
+                {{ response }}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

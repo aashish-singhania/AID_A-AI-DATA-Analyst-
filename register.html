@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - AI Data Analyst</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-6">
+    <div class="w-full max-w-md bg-white rounded-xl shadow-lg p-8">
+        <h1 class="text-2xl font-bold text-center text-gray-800 mb-6">Create Account</h1>
+        <form method="POST" action="/register" class="space-y-4">
+            <div>
+                <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+                <input id="username" name="username" type="text" required
+                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" />
+            </div>
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                <input id="email" name="email" type="email" required
+                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" />
+            </div>
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                <input id="password" name="password" type="password" minlength="6" required
+                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" />
+            </div>
+            <div>
+                <label for="confirm_password" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+                <input id="confirm_password" name="confirm_password" type="password" minlength="6" required
+                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" />
+            </div>
+            <button type="submit"
+                    class="w-full rounded-md bg-green-600 py-2 text-white font-medium hover:bg-green-700">
+                Register
+            </button>
+        </form>
+
+        {% if message %}
+        <div class="mt-4 bg-red-100 border-l-4 border-red-500 text-red-700 p-3 rounded">
+            {{ message }}
+        </div>
+        {% endif %}
+
+        <p class="mt-6 text-sm text-center text-gray-600">
+            Already have an account?
+            <a href="/login" class="text-blue-600 hover:underline">Login here</a>
+        </p>
+    </div>
+</body>
+</html>
